@@ -9,10 +9,11 @@ namespace Song
 {
     public class VerseWriter
     {
-        public string WriteVerse(string animal, string animalLine)
+        public string WriteVerse(List<string> animals, List<string> animalLines)
         {
-            return $"There was an old lady who swallowed a {animal}.{Environment.NewLine}" +
-                 $"I don't know why she swallowed a {animal} - perhaps she'll die!";
+            return $"There was an old lady who swallowed a {animals[0]}.{Environment.NewLine}" +
+                 $"I don't know why she swallowed a {animals[0]} - perhaps she'll die!";
         }
+
     }
 }

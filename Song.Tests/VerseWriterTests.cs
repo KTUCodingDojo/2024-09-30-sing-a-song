@@ -15,13 +15,16 @@ namespace Song.Tests
 I don't know why she swallowed a fly - perhaps she'll die!";
             VerseWriter writer = new VerseWriter();
 
-            string animal = "fly";
-            string animalLine = "";
+            List<string> animals = ["fly"];
+            List<string> animalLines = [""];
 
-            string actual = writer.WriteVerse(animal, animalLine);
+
+            string actual = writer.WriteVerse(animals, animalLines);
             
             Assert.Equal(expected, actual);
 
         }
+
+
     }
 }

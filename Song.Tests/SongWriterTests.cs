@@ -12,10 +12,10 @@ namespace Song.Tests
         public void EmptySongWriterAddSingleAnimal()
         {
             SongWriter writer = new SongWriter();
-            string animal = "fly";
-            string animalLine = "";
+            List<string> animals = [ "fly" ];
+            List<string> animalLines = [ "" ];
 
-            string actual = writer.Sing(animal, animalLine);
+            string actual = writer.Sing(animals, animalLines);
 
             Assert.Equal(@"There was an old lady who swallowed a fly.
 I don't know why she swallowed a fly - perhaps she'll die!", actual);
@@ -25,10 +25,10 @@ I don't know why she swallowed a fly - perhaps she'll die!", actual);
         public void EmptySongWriterAddDifferentSingleAnimal()
         {
             SongWriter writer = new SongWriter();
-            string animal = "tiger";
-            string animalLine = "";
+            List<string> animals = ["tiger"];
+            List<string> animalLines = [""];
 
-            string actual = writer.Sing(animal, animalLine);
+            string actual = writer.Sing(animals, animalLines);
 
             Assert.Equal(@"There was an old lady who swallowed a tiger.
 I don't know why she swallowed a tiger - perhaps she'll die!", actual);

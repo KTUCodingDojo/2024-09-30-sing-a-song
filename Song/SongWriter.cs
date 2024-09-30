@@ -9,10 +9,10 @@ namespace Song
 {
     public class SongWriter
     {
-        public string Sing(string animal, string animalLine)
+        public string Sing(List<string> animals, List<string> animalLines)
         {
             VerseWriter verserWriter = new VerseWriter();
-            return verserWriter.WriteVerse(animal, animalLine);
+            return verserWriter.WriteVerse(animals, animalLines);
         }
     }
 }
