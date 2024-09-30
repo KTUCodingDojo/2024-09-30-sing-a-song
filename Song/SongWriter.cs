@@ -12,7 +12,7 @@ namespace Song
         public string Sing(string animal, string animalLine)
         {
             return $"There was an old lady who swallowed a {animal}.{Environment.NewLine}" +
-                 "I don't know why she swallowed a fly - perhaps she'll die!";
+                 $"I don't know why she swallowed a {animal} - perhaps she'll die!";
         }
     }
 }
