@@ -17,10 +17,9 @@ namespace Song.Tests
 
             string actual = writer.Sing(animal, animalLine);
 
-            Assert.Equal("There was an old lady who swallowed a fly.\r\nI don't know why she swallowed a fly - perhaps she'll die!", actual);
+            Assert.Equal(@"There was an old lady who swallowed a fly.
+I don't know why she swallowed a fly - perhaps she'll die!", actual);
         }
-
-
     }
 }
 
