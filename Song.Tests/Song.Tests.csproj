@@ -28,4 +28,13 @@
     <ProjectReference Include="..\Song\Song.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="AprovalTest.Test.received.txt">
+      <DependentUpon>AprovalTest.cs</DependentUpon>
+    </None>
+    <None Update="AprovalTest.Test.verified.txt">
+      <DependentUpon>AprovalTest.cs</DependentUpon>
+    </None>
+  </ItemGroup>
+
 </Project>
