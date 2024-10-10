@@ -27,7 +27,7 @@ namespace Song
                 _song.Append(Environment.NewLine + Environment.NewLine);
             }
            
-            string verse = _verseWriter.WriteVerse(new Stack<Animal>(_animals));
+            string verse = _verseWriter.WriteVerse(_animals);
             _song.Append(verse);
 
             return _song.ToString();

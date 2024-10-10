@@ -9,31 +9,58 @@ namespace Song
     public class VerseWriter
     {
         public VerseWriter() { }
-        public string WriteVerse(Stack<Animal> animals)
+        public string WriteVerse(List<Animal> animals)
         {
+            if(animals.Count == 0) { throw new InvalidOperationException("List must contain atleast one Animal."); }
+
             StringBuilder sb = new StringBuilder();
 
-            Animal currentAnimal = animals.Pop();
+            sb.Append($"There was an old lady who swallowed a {animals[animals.Count - 1].Name}");
 
-            sb.Append($"There was an old lady who swallowed a {currentAnimal}");
+            if(animals.Count >= 2)
+            {
+                sb.AppendLine(";");
 
-            if(animals.Count == 0)
+                sb.AppendLine(animals[animals.Count - 1].UniqueLine);
+
+                for (int i = animals.Count - 1; i > 1; i--)
+                {
+                    sb.AppendLine($"She swallowed the {animals[i]} to catch the {animals[i - 1]},");
+                }
+                sb.AppendLine($"She swallowed the {animals[1]} to catch the {animals[0]};");
+
+            }
+            else
             {
                 sb.AppendLine(".");
-                sb.Append($"I don't know why she swallowed a {currentAnimal} - perhaps she'll die!");
-                return sb.ToString();
             }
-            
-            sb.AppendLine(";");
-            sb.AppendLine(currentAnimal.UniqueLine);
 
-            while (animals.Count > 1) 
-            {
-                sb.AppendLine($"She swallowed the {currentAnimal} to catch the {currentAnimal = animals.Pop()},");
-            }
-            sb.AppendLine($"She swallowed the {currentAnimal} to catch the {currentAnimal = animals.Pop()};");
+            sb.Append($"I don't know why she swallowed a {animals[0]} - perhaps she'll die!");
 
-            sb.Append($"I don't know why she swallowed a {currentAnimal} - perhaps she'll die!");
+
+            return sb.ToString();
+
+            //Animal currentAnimal = animals.Pop();
+
+            //sb.Append($"There was an old lady who swallowed a {currentAnimal}");
+
+            //if(animals.Count == 0)
+            //{
+            //    sb.AppendLine(".");
+            //    sb.Append($"I don't know why she swallowed a {currentAnimal} - perhaps she'll die!");
+            //    return sb.ToString();
+            //}
+
+            //sb.AppendLine(";");
+            //sb.AppendLine(currentAnimal.UniqueLine);
+
+            //while (animals.Count > 1) 
+            //{
+            //    sb.AppendLine($"She swallowed the {currentAnimal} to catch the {currentAnimal = animals.Pop()},");
+            //}
+            //sb.AppendLine($"She swallowed the {currentAnimal} to catch the {currentAnimal = animals.Pop()};");
+
+            //sb.Append($"I don't know why she swallowed a {currentAnimal} - perhaps she'll die!");
 
             return sb.ToString();
         }

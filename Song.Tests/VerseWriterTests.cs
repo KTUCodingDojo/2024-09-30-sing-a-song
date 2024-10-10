@@ -15,7 +15,7 @@ namespace Song.Tests
 @"There was an old lady who swallowed a fly.
 I don't know why she swallowed a fly - perhaps she'll die!";
 
-            Stack<Animal> animals = new Stack<Animal>([new Animal("fly", "")]);
+            List<Animal> animals = new List<Animal>([new Animal("fly", "")]);
 
             string actual = writer.WriteVerse(animals);
 
@@ -33,7 +33,7 @@ That wriggled and wiggled and tickled inside her.
 She swallowed the spider to catch the fly;
 I don't know why she swallowed a fly - perhaps she'll die!";
 
-            Stack<Animal> animals = new Stack<Animal>([
+            List<Animal> animals = new List<Animal>([
                 new Animal("fly", ""),
                 new Animal("spider", "That wriggled and wiggled and tickled inside her.")
                 ]);
@@ -45,7 +45,7 @@ I don't know why she swallowed a fly - perhaps she'll die!";
 
         [Theory]
         [MemberData(nameof(AnimalTestCases))]
-        public void WriteVerse_MultipleAnimals(Stack<Animal> input, string expected)
+        public void WriteVerse_MultipleAnimals(List<Animal> input, string expected)
         {
             VerseWriter writer = new VerseWriter();
 
@@ -58,7 +58,7 @@ I don't know why she swallowed a fly - perhaps she'll die!";
         {
             new object[] 
             {
-                new Stack<Animal>(
+                new List<Animal>(
                 [ 
                     new Animal("fly", ""), 
                     new Animal("spider", "That wriggled and wiggled and tickled inside her."),
@@ -74,7 +74,7 @@ I don't know why she swallowed a fly - perhaps she'll die!"
 
             new object[]
             {
-                new Stack<Animal>(
+                new List<Animal>(
                 [
                     new Animal("fly", ""),
                     new Animal("bird", "How absurd to swallow a bird."),
