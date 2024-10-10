@@ -22,7 +22,7 @@ namespace Song
         {
             _animalStack.Push(new Animal(animal, uniqueLine));
 
-            return _verseWriter.WriteVerse(_animalStack);
+            return _verseWriter.WriteVerse(new Stack<Animal>(_animalStack.Reverse()));
         }
     }
 }
