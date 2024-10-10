@@ -10,24 +10,24 @@ namespace Song
     {
         private StringBuilder _song;
         private VerseWriter _verseWriter;
-        private Stack<Animal> _animalStack;
+        private List<Animal> _animals;
         public SongWriter() 
         {
             _song = new StringBuilder();
             _verseWriter = new VerseWriter();
-            _animalStack = new Stack<Animal>();
+            _animals = new List<Animal>();
         }
 
         public string Sing(string animal, string uniqueLine)
         {
-            _animalStack.Push(new Animal(animal, uniqueLine));
+            _animals.Add(new Animal(animal, uniqueLine));
 
             if(_song.Length != 0)
             {
                 _song.Append(Environment.NewLine + Environment.NewLine);
             }
            
-            string verse = _verseWriter.WriteVerse(new Stack<Animal>(_animalStack.Reverse()));
+            string verse = _verseWriter.WriteVerse(new Stack<Animal>(_animals));
             _song.Append(verse);
 
             return _song.ToString();
