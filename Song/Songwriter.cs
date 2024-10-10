@@ -6,7 +6,19 @@ using System.Threading.Tasks;
 
 namespace Song
 {
-    public class Songwriter
+    public class SongWriter
     {
+        private string _song;
+        private VerseWriter _verseWriter;
+        public SongWriter() 
+        {
+            _song = string.Empty;
+            _verseWriter = new VerseWriter();
+        }
+
+        public string Sing(string animal, string uniqueLine)
+        {
+            return _verseWriter.SingVerse(animal, uniqueLine);
+        }
     }
 }
