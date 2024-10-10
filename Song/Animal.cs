@@ -16,5 +16,10 @@ namespace Song
             UniqueLine = uniqueLine;
         }
 
+        public override string ToString()
+        {
+            return Name;
+        }
+
     }
 }

@@ -9,11 +9,11 @@ namespace Song
     public class VerseWriter
     {
         public VerseWriter() { }
-        public string WriteVerse(Stack<string> animals, string uniqueLine)
+        public string WriteVerse(Stack<Animal> animals)
         {
             StringBuilder sb = new StringBuilder();
             bool multipleAnimals = animals.Count > 1 ? true : false;
-            string currentAnimal = animals.Pop();
+            Animal currentAnimal = animals.Pop();
 
             if(!multipleAnimals)
             {
@@ -22,7 +22,7 @@ namespace Song
             else
             {
                 sb.AppendLine($"There was an old lady who swallowed a {currentAnimal};");
-                sb.AppendLine(uniqueLine);
+                sb.AppendLine(currentAnimal.UniqueLine);
             }
 
             while (animals.Count > 1)
@@ -30,7 +30,7 @@ namespace Song
                 sb.AppendLine($"She swallowed the {currentAnimal} to catch the {currentAnimal = animals.Pop()},");
             }
 
-            string lastAnimal;
+            Animal lastAnimal;
             if (multipleAnimals)
             {
                 lastAnimal = animals.Pop();
@@ -45,11 +45,5 @@ namespace Song
 
             return sb.ToString();
         }
-
-        /*public string WriteVerse(string animal, string uniqueLine)
-        {
-            return $"There was an old lady who swallowed a {animal}.{Environment.NewLine}" +
-                   $"I don't know why she swallowed a {animal} - perhaps she'll die!";
-        }*/
     }
 }

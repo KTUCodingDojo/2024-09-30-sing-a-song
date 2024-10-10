@@ -15,10 +15,9 @@ namespace Song.Tests
 @"There was an old lady who swallowed a fly.
 I don't know why she swallowed a fly - perhaps she'll die!";
 
-            Stack<string> animals = new Stack<string>(["fly"]);
+            Stack<Animal> animals = new Stack<Animal>([new Animal("fly", "")]);
 
-            string actual = writer.WriteVerse(animals, "");
-
+            string actual = writer.WriteVerse(animals);
 
             Assert.Equal(expected, actual);
         }
@@ -34,9 +33,12 @@ That wriggled and wiggled and tickled inside her.
 She swallowed the spider to catch the fly;
 I don't know why she swallowed a fly - perhaps she'll die!";
 
-            Stack<string> animals = new Stack<string>(["fly", "spider"]);
+            Stack<Animal> animals = new Stack<Animal>([
+                new Animal("fly", ""),
+                new Animal("spider", "That wriggled and wiggled and tickled inside her.")
+                ]);
 
-            string actual = writer.WriteVerse(animals, "That wriggled and wiggled and tickled inside her.");
+            string actual = writer.WriteVerse(animals);
 
             Assert.Equal(expected, actual);
         }
