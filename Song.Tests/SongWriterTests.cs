@@ -22,7 +22,10 @@ I don't know why she swallowed a fly - perhaps she'll die!";
         public void Sing_TwoAnimals()
         {
             string expected =
-@"There was an old lady who swallowed a spider;
+@"There was an old lady who swallowed a fly.
+I don't know why she swallowed a fly - perhaps she'll die!
+
+There was an old lady who swallowed a spider;
 That wriggled and wiggled and tickled inside her.
 She swallowed the spider to catch the fly;
 I don't know why she swallowed a fly - perhaps she'll die!";

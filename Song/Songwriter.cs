@@ -8,12 +8,12 @@ namespace Song
 {
     public class SongWriter
     {
-        private string _song;
+        private StringBuilder _song;
         private VerseWriter _verseWriter;
         private Stack<Animal> _animalStack;
         public SongWriter() 
         {
-            _song = string.Empty;
+            _song = new StringBuilder();
             _verseWriter = new VerseWriter();
             _animalStack = new Stack<Animal>();
         }
@@ -22,7 +22,16 @@ namespace Song
         {
             _animalStack.Push(new Animal(animal, uniqueLine));
 
-            return _verseWriter.WriteVerse(new Stack<Animal>(_animalStack.Reverse()));
+            string verse = _verseWriter.WriteVerse(new Stack<Animal>(_animalStack.Reverse()));
+
+            if(_song.Length != 0)
+            {
+                _song.Append(Environment.NewLine + Environment.NewLine);
+            }
+           
+            _song.Append(verse);
+
+            return _song.ToString();
         }
     }
 }
