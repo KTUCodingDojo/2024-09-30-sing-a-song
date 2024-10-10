@@ -16,9 +16,18 @@ namespace Song
             _verseWriter = new VerseWriter();
         }
 
-        public string Sing(string animal, string uniqueLine)
+        public string Sing(List<Animal> animals)
         {
-            return _verseWriter.SingVerse(animal, uniqueLine);
+            if(animals.Count == 0) { return null; }
+
+            Stack<string> stack = new Stack<string>();
+
+            foreach (var animal in animals)
+            {
+                stack.Push(animal.Name);
+            }
+
+            return _verseWriter.WriteVerse(stack, animals[animals.Count - 1].UniqueLine);
         }
     }
 }
