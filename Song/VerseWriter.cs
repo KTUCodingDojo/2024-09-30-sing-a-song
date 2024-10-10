@@ -45,5 +45,12 @@ namespace Song
 
             return sb.ToString();
         }
+
+        public string FinalVerse(string animal)
+        {
+            return 
+@$"There was an old lady who swallowed a {animal}...
+...She's dead, of course!";
+        }
     }
 }

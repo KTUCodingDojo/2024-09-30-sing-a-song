@@ -37,5 +37,29 @@ I don't know why she swallowed a fly - perhaps she'll die!";
 
             Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        public void Sing_TwoAnimalsAndFinish()
+        {
+            string expected =
+@"There was an old lady who swallowed a fly.
+I don't know why she swallowed a fly - perhaps she'll die!
+
+There was an old lady who swallowed a spider;
+That wriggled and wiggled and tickled inside her.
+She swallowed the spider to catch the fly;
+I don't know why she swallowed a fly - perhaps she'll die!
+
+There was an old lady who swallowed a horse...
+...She's dead, of course!";
+
+            SongWriter writer = new SongWriter();
+
+            writer.Sing("fly", "");
+            writer.Sing("spider", "That wriggled and wiggled and tickled inside her.");
+            string actual = writer.FinishSong("horse");
+
+            Assert.Equal(expected, actual);
+        }
     }
 }

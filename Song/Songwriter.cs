@@ -22,14 +22,22 @@ namespace Song
         {
             _animalStack.Push(new Animal(animal, uniqueLine));
 
-            string verse = _verseWriter.WriteVerse(new Stack<Animal>(_animalStack.Reverse()));
-
             if(_song.Length != 0)
             {
                 _song.Append(Environment.NewLine + Environment.NewLine);
             }
            
+            string verse = _verseWriter.WriteVerse(new Stack<Animal>(_animalStack.Reverse()));
             _song.Append(verse);
+
+            return _song.ToString();
+        }
+
+        public string FinishSong(string animal)
+        {
+            _song.Append(Environment.NewLine + Environment.NewLine);
+
+            _song.Append(_verseWriter.FinalVerse(animal));
 
             return _song.ToString();
         }
