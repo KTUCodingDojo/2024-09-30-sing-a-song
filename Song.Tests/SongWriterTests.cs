@@ -9,7 +9,7 @@ namespace Song.Tests
         {
             SongWriter writer = new SongWriter();
 
-            string actual = writer.Sing(new Animal("fly", ""));
+            string actual = writer.Sing("fly", "");
 
             Assert.Equal(
                 $"There was an old lady who swallowed a fly.{Environment.NewLine}" +

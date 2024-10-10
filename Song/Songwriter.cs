@@ -18,9 +18,9 @@ namespace Song
             _animalStack = new Stack<Animal>();
         }
 
-        public string Sing(Animal animal)
+        public string Sing(string animal, string uniqueLine)
         {
-            _animalStack.Push(animal);
+            _animalStack.Push(new Animal(animal, uniqueLine));
 
             return _verseWriter.WriteVerse(_animalStack);
         }
