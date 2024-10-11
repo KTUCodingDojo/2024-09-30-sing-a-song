@@ -15,7 +15,7 @@ namespace Song.Tests
 @"There was an old lady who swallowed a fly.
 I don't know why she swallowed a fly - perhaps she'll die!";
 
-            string actual = writer.WriteVerse(new Animal("fly", ""));
+            string actual = writer.WriteVerse("fly", "");
 
             Assert.Equal(expected, actual);
         }
@@ -39,7 +39,7 @@ I don't know why she swallowed a fly - perhaps she'll die!";
             string actual = "";
             foreach (Animal animal in animals)
             {
-                actual = writer.WriteVerse(animal);
+                actual = writer.WriteVerse(animal.Name, animal.UniqueLine);
             }
 
             Assert.Equal(expected, actual);
@@ -54,7 +54,7 @@ I don't know why she swallowed a fly - perhaps she'll die!";
             string actual = "";
             foreach (Animal animal in input)
             {
-                actual = writer.WriteVerse(animal);
+                actual = writer.WriteVerse(animal.Name, animal.UniqueLine);
             }
 
             Assert.Equal(expected, actual);

@@ -15,30 +15,30 @@ namespace Song
             _lines = new List<string>();
             _lastAnimalName = string.Empty;
         }
-        public string WriteVerse(Animal animal)
+        public string WriteVerse(string animalName, string animalUniqueLine)
         {
             if(_lines.Count == 0)
             {
-                _lines.Add($"There was an old lady who swallowed a {animal.Name}.");
-                _lines.Add($"I don't know why she swallowed a {animal.Name} - perhaps she'll die!");
-                _lastAnimalName = animal.Name;
+                _lines.Add($"There was an old lady who swallowed a {animalName}.");
+                _lines.Add($"I don't know why she swallowed a {animalName} - perhaps she'll die!");
+                _lastAnimalName = animalName;
                 return ParseVerse();
             }
 
-            _lines[0] = $"There was an old lady who swallowed a {animal.Name};";
+            _lines[0] = $"There was an old lady who swallowed a {animalName};";
 
             if (_lines.Count == 2) 
             {
-                _lines.Insert(1, animal.UniqueLine);
+                _lines.Insert(1, animalUniqueLine);
             }
             else
             {
-                _lines[1] = animal.UniqueLine;
+                _lines[1] = animalUniqueLine;
             }
 
-            _lines.Insert(2, $"She swallowed the {animal.Name} to catch the {_lastAnimalName}");
+            _lines.Insert(2, $"She swallowed the {animalName} to catch the {_lastAnimalName}");
 
-            _lastAnimalName = animal.Name;
+            _lastAnimalName = animalName;
             return ParseVerse();
         }
 
@@ -65,10 +65,10 @@ namespace Song
             return sb.ToString();
         }
 
-        public string FinalVerse(string animal)
+        public string FinalVerse(string animalName)
         {
             return 
-@$"There was an old lady who swallowed a {animal}...
+@$"There was an old lady who swallowed a {animalName}...
 ...She's dead, of course!";
         }
     }
