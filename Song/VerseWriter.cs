@@ -9,23 +9,23 @@ namespace Song
     public class VerseWriter
     {
         private List<string> _lines;
-        private string lastAnimalName;
+        private string _lastAnimalName;
         public VerseWriter() 
         {
             _lines = new List<string>();
-            lastAnimalName = string.Empty;
+            _lastAnimalName = string.Empty;
         }
         public string WriteVerse(Animal animal)
         {
             if(_lines.Count == 0)
             {
-                _lines.Add($"There was an old lady who swallowed a {animal.Name}");
+                _lines.Add($"There was an old lady who swallowed a {animal.Name}.");
                 _lines.Add($"I don't know why she swallowed a {animal.Name} - perhaps she'll die!");
-                lastAnimalName = animal.Name;
+                _lastAnimalName = animal.Name;
                 return ParseVerse();
             }
 
-            _lines[0] = $"There was an old lady who swallowed a {animal.Name}";
+            _lines[0] = $"There was an old lady who swallowed a {animal.Name};";
 
             if (_lines.Count == 2) 
             {
@@ -36,10 +36,9 @@ namespace Song
                 _lines[1] = animal.UniqueLine;
             }
 
-            _lines.Insert(2, $"She swallowed the {animal.Name} to catch the {lastAnimalName}");
+            _lines.Insert(2, $"She swallowed the {animal.Name} to catch the {_lastAnimalName}");
 
-            lastAnimalName = animal.Name;
-
+            _lastAnimalName = animal.Name;
             return ParseVerse();
         }
 
@@ -47,23 +46,17 @@ namespace Song
         {
             StringBuilder sb = new StringBuilder();
 
-            if(_lines.Count == 2)
+            sb.AppendLine(_lines[0]);
+            
+            if(_lines.Count > 2)
             {
-                sb.AppendLine(_lines[0] + ".");
-            }
-            else
-            {
-                sb.AppendLine(_lines[0] + ";");
                 sb.AppendLine(_lines[1]);
-            }
 
-            for (int i = 2; i < _lines.Count - 2; i++)
-            {
-                sb.AppendLine(_lines[i] + ",");
-            }
+                for (int i = 2; i < _lines.Count - 2; i++)
+                {
+                    sb.AppendLine(_lines[i] + ",");
+                }
 
-            if (_lines.Count > 2) 
-            {
                 sb.AppendLine(_lines[_lines.Count - 2] + ";");
             }
 
