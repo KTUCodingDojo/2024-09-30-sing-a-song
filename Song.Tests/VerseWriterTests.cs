@@ -31,15 +31,15 @@ That wriggled and wiggled and tickled inside her.
 She swallowed the spider to catch the fly;
 I don't know why she swallowed a fly - perhaps she'll die!";
 
-            List<Animal> animals = new List<Animal>([
-                new Animal("fly", ""),
-                new Animal("spider", "That wriggled and wiggled and tickled inside her.")
+            List<(string, string)> animals = new List<(string, string)>([
+                ("fly", ""),
+                ("spider", "That wriggled and wiggled and tickled inside her.")
                 ]);
 
             string actual = "";
-            foreach (Animal animal in animals)
+            foreach ((string, string) animal in animals)
             {
-                actual = writer.WriteVerse(animal.Name, animal.UniqueLine);
+                actual = writer.WriteVerse(animal.Item1, animal.Item2);
             }
 
             Assert.Equal(expected, actual);
@@ -47,14 +47,14 @@ I don't know why she swallowed a fly - perhaps she'll die!";
 
         [Theory]
         [MemberData(nameof(AnimalTestCases))]
-        public void WriteVerse_MultipleAnimals(List<Animal> input, string expected)
+        public void WriteVerse_MultipleAnimals(List<(string, string)> input, string expected)
         {
             VerseWriter writer = new VerseWriter();
 
             string actual = "";
-            foreach (Animal animal in input)
+            foreach ((string, string) animal in input)
             {
-                actual = writer.WriteVerse(animal.Name, animal.UniqueLine);
+                actual = writer.WriteVerse(animal.Item1, animal.Item2);
             }
 
             Assert.Equal(expected, actual);
@@ -64,11 +64,11 @@ I don't know why she swallowed a fly - perhaps she'll die!";
         {
             new object[] 
             {
-                new List<Animal>(
+                new List<(string, string)>(
                 [ 
-                    new Animal("fly", ""), 
-                    new Animal("spider", "That wriggled and wiggled and tickled inside her."),
-                    new Animal("bird", "How absurd to swallow a bird.")
+                    ("fly", ""), 
+                    ("spider", "That wriggled and wiggled and tickled inside her."),
+                    ("bird", "How absurd to swallow a bird.")
                 ]),
 
 @"There was an old lady who swallowed a bird;
@@ -80,11 +80,11 @@ I don't know why she swallowed a fly - perhaps she'll die!"
 
             new object[]
             {
-                new List<Animal>(
+                new List<(string, string)>(
                 [
-                    new Animal("fly", ""),
-                    new Animal("bird", "How absurd to swallow a bird."),
-                    new Animal("spider", "That wriggled and wiggled and tickled inside her."),
+                    ("fly", ""),
+                    ("bird", "How absurd to swallow a bird."),
+                    ("spider", "That wriggled and wiggled and tickled inside her."),
                 ]),
 
 @"There was an old lady who swallowed a spider;
