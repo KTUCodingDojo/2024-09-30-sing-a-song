@@ -8,33 +8,66 @@ namespace Song
 {
     public class VerseWriter
     {
-        public VerseWriter() { }
-        public string WriteVerse(List<Animal> animals)
+        private List<string> _lines;
+        private string lastAnimalName;
+        public VerseWriter() 
         {
-            if(animals.Count == 0) { throw new InvalidOperationException("List must contain atleast one Animal."); }
+            _lines = new List<string>();
+            lastAnimalName = string.Empty;
+        }
+        public string WriteVerse(Animal animal)
+        {
+            if(_lines.Count == 0)
+            {
+                _lines.Add($"There was an old lady who swallowed a {animal.Name}");
+                _lines.Add($"I don't know why she swallowed a {animal.Name} - perhaps she'll die!");
+                lastAnimalName = animal.Name;
+                return ParseVerse();
+            }
 
+            _lines[0] = $"There was an old lady who swallowed a {animal.Name}";
+
+            if (_lines.Count == 2) 
+            {
+                _lines.Insert(1, animal.UniqueLine);
+            }
+            else
+            {
+                _lines[1] = animal.UniqueLine;
+            }
+
+            _lines.Insert(2, $"She swallowed the {animal.Name} to catch the {lastAnimalName}");
+
+            lastAnimalName = animal.Name;
+
+            return ParseVerse();
+        }
+
+        private string ParseVerse()
+        {
             StringBuilder sb = new StringBuilder();
 
-            sb.Append($"There was an old lady who swallowed a {animals[animals.Count - 1].Name}");
-
-            if(animals.Count == 1)
+            if(_lines.Count == 2)
             {
-                sb.AppendLine(".");
-                sb.Append($"I don't know why she swallowed a {animals[0]} - perhaps she'll die!");
-                return sb.ToString();
+                sb.AppendLine(_lines[0] + ".");
+            }
+            else
+            {
+                sb.AppendLine(_lines[0] + ";");
+                sb.AppendLine(_lines[1]);
             }
 
-            sb.AppendLine(";");
-
-            sb.AppendLine(animals[animals.Count - 1].UniqueLine);
-
-            for (int i = animals.Count - 1; i > 1; i--)
+            for (int i = 2; i < _lines.Count - 2; i++)
             {
-                sb.AppendLine($"She swallowed the {animals[i]} to catch the {animals[i - 1]},");
+                sb.AppendLine(_lines[i] + ",");
             }
-            sb.AppendLine($"She swallowed the {animals[1]} to catch the {animals[0]};");
 
-            sb.Append($"I don't know why she swallowed a {animals[0]} - perhaps she'll die!");
+            if (_lines.Count > 2) 
+            {
+                sb.AppendLine(_lines[_lines.Count - 2] + ";");
+            }
+
+            sb.Append(_lines[_lines.Count - 1]);
 
             return sb.ToString();
         }
